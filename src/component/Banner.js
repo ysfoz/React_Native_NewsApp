@@ -1,5 +1,5 @@
 import React from 'react';
-import {ScrollView,Image,Dimensions} from 'react-native';
+import {ScrollView,Image,Dimensions, View,Text, Platform} from 'react-native';
 
 
 
@@ -41,6 +41,7 @@ const Banner = () => {
       {
       banner_data.map(banner_item => {
         return (
+            <View>
           <Image
             source={{uri: banner_item.imageUrl}}
             style={{
@@ -48,8 +49,20 @@ const Banner = () => {
               height: Dimensions.get('window').height / 4,
               margin: 5,
               borderRadius: 5,
+              position:'relative'
             }}
           />
+          <Text
+          style = {{
+              color:'azure',
+              position:'absolute',
+              top: Platform.OS == 'android' ? 150 : 200,
+              left:20,
+              fontSize:16,
+              backgroundColor:'rgba(111,111,111,0.3)'
+          }}
+          >{banner_item.text}</Text>
+          </View>
         )
       })
       }
