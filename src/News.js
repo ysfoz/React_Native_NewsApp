@@ -9,7 +9,7 @@ import {
   Dimensions,
 } from 'react-native';
 import {NewCard} from './component/NewCard';
-import {Banner} from './component/Banner'
+import {Banner} from './component/Banner';
 
 const news_data = [
   {
@@ -62,15 +62,15 @@ const news_data = [
 const News = () => {
   const renderNewsData = ({item}) => <NewCard news={item} />;
 
-  <Banner/>
   return (
     <SafeAreaView style={{flex: 1}}>
+      
       <FlatList
-        keyExtractor={(item, index) => item.id.toString()}
+        keyExtractor={(_, index) => index.toString()}
         data={news_data}
         renderItem={renderNewsData}
         numColumns={2}
-        ListHeaderComponent = {Banner}
+        ListHeaderComponent= {Banner}
       />
     </SafeAreaView>
   );
